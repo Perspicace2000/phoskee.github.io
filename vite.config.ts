@@ -9,7 +9,7 @@ export default defineConfig({
   plugins: [
     remix({
       ssr: false,
-      basename: "/remix-gh-pages/",
+      basename: "/",
       buildEnd(args) {
         if (!args.viteConfig.isProduction) return;
 
