@@ -5,7 +5,7 @@ import { copyFileSync } from "node:fs";
 import { join } from "node:path";
 
 export default defineConfig({
-  base: "/",
+  base: "/phoskee.github.io/",
   plugins: [
     remix({
       ssr: false,
