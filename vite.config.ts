@@ -9,7 +9,7 @@ export default defineConfig({
   plugins: [
     remix({
       ssr: false,
-      basename: "/",
+      basename: "/phoskee.github.io/",
       buildEnd(args) {
         if (!args.viteConfig.isProduction) return;
 
