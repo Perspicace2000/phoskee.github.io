@@ -15,8 +15,7 @@ import { Separator } from "@radix-ui/react-separator";
 
 export const meta: MetaFunction = () => {
   return [
-    { title: "New Remix SPA" },
-    { name: "description", content: "Welcome to Remix (SPA Mode)!" },
+    { title: "Home" },
   ];
 };
 
@@ -37,7 +36,7 @@ export default function Index() {
         <Link to={"/test"}><Button className="w-full">TOOLS</Button></Link>
       </CardContent>
       <Separator className="my-4" />
-      <CardContent className="flex">
+      <CardContent className="flex justify-between">
         <Link to="https://instagram.com/foschijacopo"><InstagramLogoIcon className=" size-10 m-2"/></Link>
         <Link to="https://github.com/phoskee"><GitHubLogoIcon className=" size-10 m-2"/></Link>
       </CardContent>
