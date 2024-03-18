@@ -5,6 +5,7 @@ import {
   Outlet,
   Scripts,
   ScrollRestoration,
+  useRouteError,
 } from "@remix-run/react";
 
 import stylesheet from "~/tailwind.css?url";
@@ -37,4 +38,22 @@ export default function App() {
 
 export function HydrateFallback() {
   return <p>Loading...</p>;
+}
+
+export function ErrorBoundary() {
+  const error = useRouteError();
+  console.error(error);
+  return (
+    <html>
+      <head>
+        <title>Oh no!</title>
+        <Meta />
+        <Links />
+      </head>
+      <body>
+        Oh no!
+        <Scripts />
+      </body>
+    </html>
+  );
 }
