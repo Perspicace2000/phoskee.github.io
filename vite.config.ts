@@ -5,11 +5,11 @@ import { copyFileSync } from "node:fs";
 import { join } from "node:path";
 
 export default defineConfig({
-  base: "/phoskee.github.io/",
+  base: "/",
   plugins: [
     remix({
       ssr: false,
-      basename: "/phoskee.github.io/",
+      basename: "/",
       buildEnd(args) {
         if (!args.viteConfig.isProduction) return;
 
