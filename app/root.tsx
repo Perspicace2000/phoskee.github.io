@@ -58,7 +58,7 @@ export function ErrorBoundary() {
         <h1>
           {isRouteErrorResponse(error) && error.status === 404 ? (
             <div
-              className="flex flex-col place-items-center border rounded-3xl p-5"
+              className="flex flex-col place-items-center rounded-3xl border p-5"
               style={{
                 position: "fixed",
                 top: "50%",
@@ -67,7 +67,7 @@ export function ErrorBoundary() {
               }}
             >
               <h1
-                className="mx-auto text-9xl animate-pulse"
+                className="mx-auto animate-pulse text-9xl"
                 style={{ fontFamily: "Bebas Neue, sans-serif" }}
               >
                 404
