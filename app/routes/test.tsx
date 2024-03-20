@@ -31,6 +31,7 @@ export default function Index() {
       <div className="border border-red-500 mx-auto">
         <div>
           <InputOTP
+            inputMode="text"
             pattern={REGEXP_ONLY_CHARS}
             maxLength={26}
             value={value}
