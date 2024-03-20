@@ -58,7 +58,7 @@ export function ErrorBoundary() {
         <h1>
           {isRouteErrorResponse(error) && error.status === 404 ? (
             <div
-              className="flex flex-col place-items-center rounded-3xl border p-5"
+              className="flex flex-col place-items-center rounded-3xl border p-5 bg-slate-100"
               style={{
                 position: "fixed",
                 top: "50%",

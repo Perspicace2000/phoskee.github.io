@@ -57,7 +57,7 @@ export default function Index() {
         </Button>
       </Link>
 
-      <div className="mx-auto min-w-fit border rounded-lg p-5">
+      <div className="mx-auto min-w-fit border rounded-lg p-5 bg-slate-100">
         <Collapsible
           open={isOpen === 1}
           onOpenChange={() => handleCollapsibleOpen(1)}
