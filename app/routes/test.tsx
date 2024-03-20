@@ -10,9 +10,7 @@ import React, { useState } from "react";
 import {
   Select,
   SelectContent,
-  SelectGroup,
   SelectItem,
-  SelectLabel,
   SelectTrigger,
   SelectValue,
 } from "~/components/ui/select";
@@ -25,8 +23,7 @@ export const meta: MetaFunction = () => {
 
 export default function Index() {
   const [value, setValue] = React.useState("");
-  const [paroleUnicheMap, setParoleUnicheMap] = useState([]);
-  let risultatiTrovati = [];
+  const [paroleTrovateMap, setParoleTrovateMap] = useState([]);
 
   const avviaRicerca = async () => {
     if (value.length < 25) {
@@ -35,24 +32,25 @@ export default function Index() {
       console.log("ok");
       console.log("chiamo trovo parole");
       // Chiamata a trovaParole dopo la sostituzione delle lettere
-      risultatiTrovati = await trovaParole(
+      const risultatiTrovati = await trovaParole(
         value,
         "dizionario_no_accenti_minuscolo.txt",
         4,
         16
       );
-      console.log("risultati trovati", risultatiTrovati);
+      console.log("Risultati trovati:", risultatiTrovati);
+      setParoleTrovateMap(risultatiTrovati);
 
       /*fine else*/
     }
     async function trovaParole(
-      letters,
-      fileParole,
-      lunghezzaMin,
-      lunghezzaMax
+      letters: string,
+      fileParole: string,
+      lunghezzaMin: number,
+      lunghezzaMax: number
     ) {
       console.log("avvio trova parole");
-      const risultati = [];
+      const risultati: { parola: any; coordinate: any[] }[] = [];
       const paroleDaTrovare = [];
       // Creazione della griglia
       const griglia = [];
@@ -95,10 +93,10 @@ export default function Index() {
         );
 
       function ricercaParole(
-        riga,
-        colonna,
-        parolaCorrente,
-        parolaRestante,
+        riga: number,
+        colonna: number,
+        parolaCorrente: string,
+        parolaRestante: string,
         visitate
       ) {
         if (visitate.has(`${riga},${colonna}`)) {
@@ -161,10 +159,7 @@ export default function Index() {
           }
         }
       }
-      console.log("paroleUniche");
-      console.log(paroleUniche);
-      
-      setParoleUnicheMap(paroleUniche)
+
       return risultati;
     }
   };
@@ -201,9 +196,12 @@ export default function Index() {
               <SelectValue placeholder="Seleziona una parola" />
             </SelectTrigger>
             <SelectContent>
-              {paroleUnicheMap.map((parola, index) => (
-                <SelectItem key={index} value={parola}>
-                  {parola}
+              {paroleTrovateMap.map((parola, index) => (
+                <SelectItem
+                  key={index}
+                  value={`${parola.parola}-${parola.coordinate.join("-")}`}
+                >
+                  {parola.parola}
                 </SelectItem>
               ))}
             </SelectContent>
