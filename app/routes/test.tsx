@@ -16,6 +16,7 @@ import {
 } from "~/components/ui/select";
 import { Button } from "~/components/ui/button";
 import { Input } from "~/components/ui/input";
+import { Link } from "@remix-run/react";
 
 export const meta: MetaFunction = () => {
   return [{ title: "Tests" }];
@@ -167,7 +168,7 @@ export default function Index() {
   return (
     <div className="flex place-items-center border border-red-500 min-h-svh ">
       <div className="border border-red-500 mx-auto">
-        <div>
+        <div className="mb-2">
           <InputOTP
             inputMode="text"
             pattern={REGEXP_ONLY_CHARS}
@@ -206,9 +207,9 @@ export default function Index() {
               ))}
             </SelectContent>
           </Select>
-          <Button id="reset-btn" className="rounded-xl" variant={"secondary"}>
+          <Link to="/test"><Button className="rounded-xl w-full" variant={"secondary"}>
             Reset
-          </Button>
+          </Button></Link>
           <Input className="rounded-xl bg-white text-black"></Input>
           <Button id="cerca-btn" className="rounded-xl" variant={"secondary"}>
             Cerca

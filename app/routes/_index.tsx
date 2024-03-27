@@ -23,7 +23,7 @@ export const meta: MetaFunction = () => {
 export default function Index() {
   const [isOpen, setIsOpen] = React.useState(false);
   return (
-    <div className="flex place-items-center border border-red-500 min-h-svh">
+    <div className="flex place-items-center min-h-svh">
       <Card className="w-fit mx-auto p-2">
         <Avatar className="mx-auto my-5">
           <AvatarImage src="https://github.com/phoskee.png" />

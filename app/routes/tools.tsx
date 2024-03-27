@@ -50,7 +50,7 @@ export default function Index() {
   };
 
   return (
-    <div className="flex place-items-center border border-red-500 min-h-svh">
+    <div className="flex place-items-center min-h-svh">
       <Link to="/" className="place-self-start absolute">
         <Button className="p-2 m-2" size="icon">
           <ArrowLeftIcon className=" size-12 " />
