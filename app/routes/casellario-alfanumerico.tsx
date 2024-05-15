@@ -71,10 +71,10 @@ export default function CasellarioAlfanumerico() {
   };
 
   return (
-    <div className="m-2 min-h-svh">
+    <div className="min-h-svh flex place-items-center">
       <div className="flex-col place-items-center mx-auto w-fit">
-        <div className="p-2">
-          <div className="w-fit grid grid-cols-3 gap-2 rounded-xl bg-pink-200 p-2">
+        <div className="p-1">
+          <div className="w-fit grid grid-cols-3 gap-1 rounded-xl bg-pink-200 p-1">
             {[0, 1, 2, 3, 4, 5, 6, 7, 8].map((index) => (
               <input
                 key={index}
@@ -94,8 +94,8 @@ export default function CasellarioAlfanumerico() {
             ))}
           </div>
         </div>
-        <div className="p-2">
-          <div className="w-fit grid grid-cols-3 gap-2 rounded-xl bg-pink-200 p-2">
+        <div className="p-1">
+          <div className="w-fit grid grid-cols-3 gap-1 rounded-xl bg-pink-200 p-1">
             {[0, 1, 2, 3, 4, 5, 6, 7, 8].map((index) => (
               <input
                 key={index}
@@ -114,7 +114,7 @@ export default function CasellarioAlfanumerico() {
           </div>
         </div>
 
-        <div className="p-2">
+        <div className="p-1">
           <Label htmlFor="timeoutInput">Timeout (ms):</Label>
           <Input
             id="timeoutInput"
@@ -123,7 +123,7 @@ export default function CasellarioAlfanumerico() {
             onChange={(e) => setTimeoutValue(parseInt(e.target.value))}
           />
         </div>
-        <div className="p-2">
+        <div className="p-1">
           <Label htmlFor="numCharsInput">Numero di Caratteri:</Label>
           <Input
             id="numCharsInput"
@@ -131,10 +131,10 @@ export default function CasellarioAlfanumerico() {
             value={numChars}
             onChange={(e) => setNumChars(parseInt(e.target.value))}
           />
-          <Button className="w-full my-2" onClick={verifyInput}>
+          <Button className="w-full my-1" onClick={verifyInput}>
             Verifica
           </Button>
-          <Button className="w-full my-2" onClick={handleNewSequence}>
+          <Button className="w-full my-1" onClick={handleNewSequence}>
             Nuovo
           </Button>
         </div>
