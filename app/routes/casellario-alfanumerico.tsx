@@ -120,12 +120,22 @@ useEffect(() => {
         </div>
 
         <div className="p-1">
-          <Label htmlFor="timeoutInput">Timeout (ms):</Label>
+          <Label htmlFor="timeoutInput">TimeOut {timeoutValue} (ms):</Label>
           <Input
             id="timeoutInput"
             type="number"
             value={timeoutValue}
             onChange={(e) => setTimeoutValue(parseInt(e.target.value))}
+            className="w-full"
+            step={100}
+          />
+          <Slider
+            id="timeoutInput"
+            max={10000}
+            step={100}
+            defaultValue={[timeoutValue]}
+            onValueChange={(e) => setTimeoutValue(parseInt(e))}
+            className="my-4"
           />
         </div>
         <div className="p-1">
@@ -136,6 +146,7 @@ useEffect(() => {
             step={1}
             defaultValue={[numChars]}
             onValueChange={(e) => setNumChars(parseInt(e))}
+            className="mb-5"
           />
           <Button className="w-full my-1" onClick={verifyInput}>
             Verifica
