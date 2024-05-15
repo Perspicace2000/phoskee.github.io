@@ -10,6 +10,7 @@ export default function CasellarioAlfanumerico() {
   const [showRandomChars, setShowRandomChars] = useState(false);
   const [timeoutValue, setTimeoutValue] = useState(1000); // valore di default: 1000 ms
   const [numChars, setNumChars] = useState(4); // valore di default: 4 caratteri
+  const [displayedRandomChars, setDisplayedRandomChars] = useState("");
 
   /// Genera una nuova sequenza di caratteri casuali e posizionali in modo random all'interno della griglia
   const generateNewChars = () => {
@@ -40,18 +41,16 @@ export default function CasellarioAlfanumerico() {
     return chars;
   };
 
-  // Mostra i caratteri casuali per il timeout specificato
-  useEffect(() => {
+ // Mostra i caratteri casuali per il timeout specificato
+useEffect(() => {
     let timeout;
     if (showRandomChars) {
-      const randomChars = generateNewChars();
-      setRandomChars(randomChars);
       timeout = setTimeout(() => {
         setShowRandomChars(false);
       }, timeoutValue);
     }
     return () => clearTimeout(timeout);
-  }, [showRandomChars, timeoutValue, numChars]);
+  }, [showRandomChars, timeoutValue]);
 
   // Verifica le lettere inserite
   const verifyInput = () => {
@@ -62,13 +61,18 @@ export default function CasellarioAlfanumerico() {
       }
     }
     alert(`Hai indovinato ${correctCount} caratteri.`);
+    setTimeoutValue(10000)
+    setShowRandomChars(true);
   };
 
-  // Genera una nuova sequenza di caratteri casuali e mostra
-  const handleNewSequence = () => {
-    setShowRandomChars(true);
-    setInputValue("");
-  };
+    // Genera una nuova sequenza di caratteri casuali e mostra
+    const handleNewSequence = () => {
+        const newRandomChars = generateNewChars();
+        setTimeoutValue(1000)
+        setRandomChars(newRandomChars);
+        setShowRandomChars(true);
+        setInputValue("");
+    };
 
   return (
     <div className="min-h-svh flex place-items-center">
@@ -128,6 +132,7 @@ export default function CasellarioAlfanumerico() {
           <Input
             id="numCharsInput"
             type="number"
+            max={9}
             value={numChars}
             onChange={(e) => setNumChars(parseInt(e.target.value))}
           />
