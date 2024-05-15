@@ -4,6 +4,19 @@ import { Button } from "~/components/ui/button";
 import { Label } from "~/components/ui/label";
 import { Input } from "~/components/ui/input";
 import { Slider } from "~/components/ui/slider";
+import { Link } from "@remix-run/react";
+import { ArrowLeftIcon } from "@radix-ui/react-icons";
+import {
+    AlertDialog,
+    AlertDialogAction,
+    AlertDialogCancel,
+    AlertDialogContent,
+    AlertDialogDescription,
+    AlertDialogFooter,
+    AlertDialogHeader,
+    AlertDialogTitle,
+    AlertDialogTrigger,
+  } from "~/components/ui/alert-dialog"
 
 export default function CasellarioAlfanumerico() {
   const [randomChars, setRandomChars] = useState("");
@@ -11,7 +24,9 @@ export default function CasellarioAlfanumerico() {
   const [showRandomChars, setShowRandomChars] = useState(false);
   const [timeoutValue, setTimeoutValue] = useState(1000); // valore di default: 1000 ms
   const [numChars, setNumChars] = useState(4); // valore di default: 4 caratteri
-  const [displayedRandomChars, setDisplayedRandomChars] = useState("");
+  const [open, setOpen] = React.useState(false);
+  const [corrette, setCorrette] = useState(0);
+  
 
   /// Genera una nuova sequenza di caratteri casuali e posizionali in modo random all'interno della griglia
   const generateNewChars = () => {
@@ -42,8 +57,8 @@ export default function CasellarioAlfanumerico() {
     return chars;
   };
 
- // Mostra i caratteri casuali per il timeout specificato
-useEffect(() => {
+  // Mostra i caratteri casuali per il timeout specificato
+  useEffect(() => {
     let timeout;
     if (showRandomChars) {
       timeout = setTimeout(() => {
@@ -59,24 +74,32 @@ useEffect(() => {
     for (let i = 0; i < inputValue.length; i++) {
       if (inputValue[i] === randomChars[i]) {
         correctCount++;
+    setCorrette(correctCount)
       }
     }
-    alert(`Hai indovinato ${correctCount} caratteri.`);
-    setTimeoutValue(10000)
+    //alert(`Hai indovinato ${correctCount} caratteri.`);
+    setOpen(true)
+    setTimeoutValue(10000);
     setShowRandomChars(true);
   };
 
-    // Genera una nuova sequenza di caratteri casuali e mostra
-    const handleNewSequence = () => {
-        const newRandomChars = generateNewChars();
-        setTimeoutValue(1000)
-        setRandomChars(newRandomChars);
-        setShowRandomChars(true);
-        setInputValue("");
-    };
+  // Genera una nuova sequenza di caratteri casuali e mostra
+  const handleNewSequence = () => {
+    const newRandomChars = generateNewChars();
+    setCorrette(0)
+    setTimeoutValue(1000);
+    setRandomChars(newRandomChars);
+    setShowRandomChars(true);
+    setInputValue("");
+  };
 
   return (
     <div className="min-h-svh flex place-items-center">
+      <Link to="/" className="place-self-start absolute">
+        <Button className="p-2 m-2" size="icon">
+          <ArrowLeftIcon className=" size-12 " />
+        </Button>
+      </Link>
       <div className="flex-col place-items-center mx-auto w-fit">
         <div className="p-1">
           <div className="w-fit grid grid-cols-3 gap-1 rounded-xl bg-pink-200 p-1">
@@ -156,6 +179,19 @@ useEffect(() => {
           </Button>
         </div>
       </div>
+      <AlertDialog open={open} onOpenChange={setOpen}>
+        <AlertDialogContent>
+          <AlertDialogHeader>
+            <AlertDialogTitle>SEI UNA GRANDE!</AlertDialogTitle>
+            <AlertDialogDescription>
+            Hai indovinato {corrette} caratteri su {numChars}.
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter>
+            <Button onClick={() => setOpen(false)}>Continua</Button>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
     </div>
   );
 }
