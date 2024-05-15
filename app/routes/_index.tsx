@@ -60,7 +60,7 @@ export default function Index() {
               </Link>
             </CollapsibleContent>
             <CollapsibleContent className="space-y-2">
-              <Link to={"/projects"}>
+              <Link to={"/casellario-alfanumerico"}>
                 <Button className="w-full">PROJECTS</Button>
               </Link>
             </CollapsibleContent>
