@@ -3,6 +3,7 @@ import { REGEXP_ONLY_CHARS } from "input-otp";
 import { Button } from "~/components/ui/button";
 import { Label } from "~/components/ui/label";
 import { Input } from "~/components/ui/input";
+import { Slider } from "~/components/ui/slider";
 
 export default function CasellarioAlfanumerico() {
   const [randomChars, setRandomChars] = useState("");
@@ -128,13 +129,13 @@ useEffect(() => {
           />
         </div>
         <div className="p-1">
-          <Label htmlFor="numCharsInput">Numero di Caratteri:</Label>
-          <Input
+          <Label htmlFor="numCharsInput">Numero di Caratteri: {numChars}</Label>
+          <Slider
             id="numCharsInput"
-            type="number"
             max={9}
-            value={numChars}
-            onChange={(e) => setNumChars(parseInt(e.target.value))}
+            step={1}
+            defaultValue={[numChars]}
+            onValueChange={(e) => setNumChars(parseInt(e))}
           />
           <Button className="w-full my-1" onClick={verifyInput}>
             Verifica
