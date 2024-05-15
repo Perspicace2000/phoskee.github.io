@@ -120,7 +120,7 @@ useEffect(() => {
         </div>
 
         <div className="p-1">
-          <Label htmlFor="timeoutInput">TimeOut {timeoutValue} (ms):</Label>
+          <Label htmlFor="timeoutInput">TimeOut {timeoutValue} (ms)</Label>
           <Input
             id="timeoutInput"
             type="number"
