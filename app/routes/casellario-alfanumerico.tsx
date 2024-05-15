@@ -7,16 +7,16 @@ import { Slider } from "~/components/ui/slider";
 import { Link } from "@remix-run/react";
 import { ArrowLeftIcon } from "@radix-ui/react-icons";
 import {
-    AlertDialog,
-    AlertDialogAction,
-    AlertDialogCancel,
-    AlertDialogContent,
-    AlertDialogDescription,
-    AlertDialogFooter,
-    AlertDialogHeader,
-    AlertDialogTitle,
-    AlertDialogTrigger,
-  } from "~/components/ui/alert-dialog"
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from "~/components/ui/alert-dialog";
 
 export default function CasellarioAlfanumerico() {
   const [randomChars, setRandomChars] = useState("");
@@ -26,7 +26,6 @@ export default function CasellarioAlfanumerico() {
   const [numChars, setNumChars] = useState(4); // valore di default: 4 caratteri
   const [open, setOpen] = React.useState(false);
   const [corrette, setCorrette] = useState(0);
-  
 
   /// Genera una nuova sequenza di caratteri casuali e posizionali in modo random all'interno della griglia
   const generateNewChars = () => {
@@ -74,11 +73,11 @@ export default function CasellarioAlfanumerico() {
     for (let i = 0; i < inputValue.length; i++) {
       if (inputValue[i] === randomChars[i]) {
         correctCount++;
-    setCorrette(correctCount)
+        setCorrette(correctCount);
       }
     }
     //alert(`Hai indovinato ${correctCount} caratteri.`);
-    setOpen(true)
+    setOpen(true);
     setTimeoutValue(10000);
     setShowRandomChars(true);
   };
@@ -86,7 +85,7 @@ export default function CasellarioAlfanumerico() {
   // Genera una nuova sequenza di caratteri casuali e mostra
   const handleNewSequence = () => {
     const newRandomChars = generateNewChars();
-    setCorrette(0)
+    setCorrette(0);
     setTimeoutValue(1000);
     setRandomChars(newRandomChars);
     setShowRandomChars(true);
@@ -184,7 +183,7 @@ export default function CasellarioAlfanumerico() {
           <AlertDialogHeader>
             <AlertDialogTitle>SEI UNA GRANDE!</AlertDialogTitle>
             <AlertDialogDescription>
-            Hai indovinato {corrette} caratteri su {numChars}.
+              Hai indovinato {corrette} caratteri su {numChars}.
             </AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter>
